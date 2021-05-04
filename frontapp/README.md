@@ -1,4 +1,4 @@
-# my-app
+# frontapp
 
 ## Project setup
 ```
