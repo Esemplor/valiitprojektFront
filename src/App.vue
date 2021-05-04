@@ -1,39 +1,11 @@
 <template>
-
-  <v-app>
-<!--    <v-navigation-drawer app>-->
-<!--      &lt;!&ndash; &ndash;&gt;-->
-<!--    </v-navigation-drawer>-->
-
-<!--    <v-app-bar app>-->
-<!--      &lt;!&ndash; &ndash;&gt;-->
-<!--    </v-app-bar>-->
-
-    <!-- Sizes your content based upon application components -->
-
-      <Main></Main>
-
-      <!-- Provides the application the proper gutter -->
-      <v-container fluid><div id="app">
-        <div id="nav">
-          <router-link to="/">Home</router-link> |
-          <router-link to="/about">About</router-link> |
-          <router-link to="/register">Register</router-link> |
-          <router-link to="/login">Login</router-link>
-        </div></div>
-
-        <!-- If using vue-router -->
-        <router-view>
-
-        </router-view>
-
-      </v-container>
-
-
-    <v-footer app>
-      <!-- -->
-    </v-footer>
-  </v-app>
+  <div id="app">
+    <div id="nav">
+      <router-link to="/">Home</router-link> |
+      <router-link to="/about">About</router-link>
+    </div>
+    <router-view/>
+  </div>
 </template>
 
 <style>
@@ -58,19 +30,3 @@
   color: #42b983;
 }
 </style>
-
-<script>
-import Main from './components/Main';
-
-export default {
-  name: 'App',
-
-  components: {
-    Main,
-  },
-
-  data: () => ({
-    //
-  }),
-};
-</script>
