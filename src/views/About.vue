@@ -10,29 +10,30 @@
     <label for="juust">Juust</label>
     <br>
     <button v-on:click="sendIngredients">Saada</button>
-<!--<span>Valitud ingredient_id'd arrays: {{ checkedIngredients }}</span>-->
+<span>Valitud ingredient_id'd arrays: {{ checkedIngredients }}</span>
     <br>
   </div>
 
 </template>
 <script>
 
-function sendIngredients() {
-  this.$http.post('localhost:8080/stuff/recipe', {
-    checkedIngredients: this.checkedIngredients,
-  })
-      .then(function (response) {
-        console.log(response)
+  function sendIngredients() {
+    this.$http.get('http://localhost:8080/stuff/recipe?a=' + this.checkedIngredients)
+        .then(response => {
+          this.createAccountResponse = response.data
+        })
+        .catch(response => {
+          alert("Error")
+        })
+  }
 
-      })
-  //     .then(response => {
-  //   this.registerResponseString = 'You are registered!'
-  // })
-  //     .catch(function (error) {
-  //       alert("Konto juba loodud!")
-  //     })
 
-}
+
+
+
+
+
+
 
 export default {
   data: function () {

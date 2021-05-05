@@ -16,6 +16,6 @@ new Vue({
 new Vue({
   el: '...',
   data: {
-    checkedNames: []
+    checkedIngredients: []
   }
 })
