@@ -64,9 +64,9 @@
     <button v-on:click="sendIngredients">Saada</button>
     <span></span>
     <br>
-    <table border="1">
+    <table border="1" style="border:1px solid black;margin-left:auto;margin-right:auto;">
       <tr v-for="row in createAccountResponse">
-        <td>{{ row.output }}</td>
+        <td><a :href= row.output > Link</a></td>
         <td>{{ row.recipeName }}</td>
       </tr>
     </table>
