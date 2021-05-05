@@ -64,7 +64,7 @@
     <button v-on:click="sendIngredients">Saada</button>
     <span></span>
     <br>
-    <table>
+    <table border="1">
       <tr v-for="row in createAccountResponse">
         <td>{{ row.output }}</td>
         <td>{{ row.recipeName }}</td>
