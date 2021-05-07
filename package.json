@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "axios": "^0.21.1",
+    "link-prevue": "^1.2.0",
     "vue": "^2.6.11",
     "vue-axios": "^3.2.4",
     "vue-multiselect": "^2.1.6",
