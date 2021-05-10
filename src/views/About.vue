@@ -8,7 +8,7 @@
                  track-by="ingredient_id" :options="options" :multiple="true"></multiselect>
     <!--    <pre class="language-json"><code>{{ value }}</code></pre>-->
 
-    <h2>Vali koostisosad</h2>
+    <!--    <h2>{{ testLink }}</h2>-->
 
     <br>
     <button v-on:click="sendIngredients">Saada</button>
@@ -16,38 +16,35 @@
     <br>
     <table border="1" style="border:1px solid black;margin-left:auto;margin-right:auto;">
       <tr v-for="row in getRecipesResponse">
-        <td><a :href=row.output> Link</a></td>
-        <td>{{ row.recipeName }}</td>
-         <td><link-prevue url2 ></link-prevue></td>
+        <!--         <td><a :href=row.output :id="testLink"> Link </a></td>-->
+        <link-prevue :url="testLink"></link-prevue>
 
+        <!--        <td>{{ row.recipeName }}</td>-->
 
       </tr>
     </table>
-    <div class="card">
-      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-      <link rel="stylesheet" href="index.css">
-    </div>
-    <img src="" class="card-img-top">
-    <div class="card-body">
-      <h5 class="card-title"></h5>
-      <p class="card-text"></p>
-    </div>
+    <!--    {{ testLink }}-->
   </div>
 </template>
 <script>
 import Multiselect from 'vue-multiselect'
 import LinkPrevue from 'link-prevue'
 
+import getPreviewFromContent from 'link-preview-js'
+
+
 function sendIngredients() {
   let x = this.value.map(y => y.ingredient_id);
-  let url2 = getRecipesResponse.output
+
   this.$http.get('http://localhost:8080/stuff/recipe?a=' + x)
+
       .then(response => {
         this.getRecipesResponse = response.data
+        this.testLink = response.data.map(({output}) => output)
       })
-      .catch(response => {
-        alert("Error")
-      })
+  // .catch(response => {
+  //   alert("Error")
+  // })
 }
 
 function getArrayFromObject() {
@@ -56,13 +53,14 @@ function getArrayFromObject() {
 }
 
 
-
 export default {
   components: {
     LinkPrevue,
-    Multiselect
+    Multiselect,
+    getPreviewFromContent
   },
   data() {
+    let urlTest = 'https://www.delfi.ee/';
     return {
       value: '',
       options: [
@@ -99,6 +97,8 @@ export default {
       'checkedIngredients': [],
       'getRecipesResponse': [],
       'result': [],
+      'testLink': '',
+      'linkArray': []
 
 
     }
@@ -106,8 +106,8 @@ export default {
   methods: {
     'sendIngredients': sendIngredients,
     'getArrayFromObject': getArrayFromObject,
-    onClick(prevue){
-      console.log('click',prevue.images,prevue.title,prevue.url,prevue.description)
+    onClick(prevue) {
+      console.log('click', prevue.images, prevue.title, prevue.url, prevue.description)
     }
   }
 }
