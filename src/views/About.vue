@@ -19,16 +19,16 @@
     <!--    <h2>{{ testLink }}</h2>-->
     <button v-on:click="sendIngredients">Otsi retsepte</button>
     <div>
-    <table border="1" style="border:1px solid black;margin-left:auto;margin-right:auto;">
-      <tr v-for="row in getRecipesResponse">
-        <!--         <td><a :href=row.output :id="testLink"> Link </a></td>-->
-        <!--        <td>{{ row.recipeName }}</td>-->
-        <td>
-          <link-prevue :url="row.output"></link-prevue>
-<!--          {{row.output}}-->
-        </td>
-      </tr>
-    </table>
+      <table border="1" style="border:1px solid black;margin-left:auto;margin-right:auto;">
+        <tr v-for="row in getRecipesResponse">
+          <!--         <td><a :href=row.output :id="testLink"> Link </a></td>-->
+          <!--        <td>{{ row.recipeName }}</td>-->
+          <td>
+            <link-prevue :url="row.output"></link-prevue>
+            <!--          {{row.output}}-->
+          </td>
+        </tr>
+      </table>
     </div>
 
     <!--    {{ testLink }}-->
@@ -39,7 +39,6 @@
 <script>
 import Multiselect from 'vue-multiselect'
 import LinkPrevue from 'link-prevue'
-
 import getPreviewFromContent from 'link-preview-js'
 
 
@@ -131,8 +130,6 @@ export default {
 }
 </script>
 <style>
-
-
 
 
 #about {
