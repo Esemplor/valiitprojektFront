@@ -1,8 +1,6 @@
 <template>
-  <div class="about">
+  <div class="app">
     <h1>Kylmik.ee</h1>
-
-
     <label class="typo__label">Vali koostisosad</label>
     <multiselect v-model="value" tag-placeholder="Add this as new tag" placeholder="Otsi koostisosa"
                  label="ingredient_name"
@@ -20,6 +18,7 @@
 
     <!--    <h2>{{ testLink }}</h2>-->
     <button v-on:click="sendIngredients">Otsi retsepte</button>
+    <div>
     <table border="1" style="border:1px solid black;margin-left:auto;margin-right:auto;">
       <tr v-for="row in getRecipesResponse">
         <!--         <td><a :href=row.output :id="testLink"> Link </a></td>-->
@@ -30,7 +29,7 @@
         </td>
       </tr>
     </table>
-
+    </div>
 
     <!--    {{ testLink }}-->
 
@@ -132,34 +131,11 @@ export default {
 }
 </script>
 <style>
-body {
-  margin: 0;
-}
-
-div#card:nth-child(odd) {
-  width: 50%;
-  background: lightblue;
-  display: inline-block;
-}
-
-div#card:nth-child(even) {
-  width: 50%;
-  background: orange;
-  display: inline-block;
-  float: left;
-}
-
-.parent {
-  font-size: 0;
-  margin: 0;
-}
-
-.font {
-  font-size: 16px;
-}
 
 
-#app {
+
+
+#about {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -179,4 +155,6 @@ div#card:nth-child(even) {
 #nav a.router-link-exact-active {
   color: #42b983;
 }
+
 </style>
+<style src="vue-multiselect/dist/vue-multiselect.min.css"></style>
