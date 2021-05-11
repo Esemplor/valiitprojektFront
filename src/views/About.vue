@@ -17,18 +17,22 @@
     <!--    <pre class="language-json"><code>{{ value }}</code></pre>-->
 
     <!--    <h2>{{ testLink }}</h2>-->
+    <br>
     <button v-on:click="sendIngredients">Otsi retsepte</button>
-    <div>
-      <table border="1" style="border:1px solid black;margin-left:auto;margin-right:auto;">
-        <tr v-for="row in getRecipesResponse">
-          <!--         <td><a :href=row.output :id="testLink"> Link </a></td>-->
-          <!--        <td>{{ row.recipeName }}</td>-->
-          <td>
-            <link-prevue :url="row.output"></link-prevue>
-            <!--          {{row.output}}-->
-          </td>
-        </tr>
-      </table>
+    <div class="followFont">
+      <div v-for="row in getRecipesResponse" class="col">
+        <div>
+          <link-prevue :url="row.output"></link-prevue>
+        </div>
+
+
+        <!--         <td><a :href=row.output :id="testLink"> Link </a></td>-->
+        <!--        <td>{{ row.recipeName }}</td>-->
+
+        <!--          {{row.output}}-->
+      </div>
+
+
     </div>
 
     <!--    {{ testLink }}-->
@@ -39,7 +43,6 @@
 <script>
 import Multiselect from 'vue-multiselect'
 import LinkPrevue from 'link-prevue'
-import getPreviewFromContent from 'link-preview-js'
 
 
 function sendIngredients() {
@@ -66,8 +69,8 @@ function getArrayFromObject() {
 export default {
   components: {
     LinkPrevue,
-    Multiselect,
-    getPreviewFromContent
+    Multiselect
+
   },
   data() {
     let urlTest = 'https://www.delfi.ee/';
@@ -131,6 +134,30 @@ export default {
 </script>
 <style>
 
+.row {
+  display: table
+}
+
+.col {
+  float: left;
+  padding: 50px;
+}
+
+div.block {
+  overflow: hidden;
+}
+
+div.block label {
+  width: 160px;
+  display: block;
+  float: left;
+  text-align: left;
+}
+
+div.block .input {
+  margin-left: 4px;
+  float: left;
+}
 
 #about {
   font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -155,3 +182,4 @@ export default {
 
 </style>
 <style src="vue-multiselect/dist/vue-multiselect.min.css"></style>
+
