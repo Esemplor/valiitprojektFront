@@ -1,7 +1,7 @@
 <template>
   <div class="app">
-    <h1>Kylmik.ee</h1>
     <label class="typo__label">Vali koostisosad</label>
+    <br>
     <multiselect v-model="value" tag-placeholder="Add this as new tag" placeholder="Otsi koostisosa"
                  label="ingredient_name"
                  track-by="ingredient_id" :options="options" :multiple="true" group-values="koostisained"
@@ -14,28 +14,19 @@
                  :max-height="150"
     >
     </multiselect>
-    <!--    <pre class="language-json"><code>{{ value }}</code></pre>-->
-
-    <!--    <h2>{{ testLink }}</h2>-->
     <br>
-    <button v-on:click="sendIngredients">Otsi retsepte</button>
+    <button v-on:click="sendIngredients"><img alt="Vue logo" src="../assets/kylmikgif.gif"></button>
     <div class="followFont">
       <div v-for="row in getRecipesResponse" class="col">
         <div>
-          <link-prevue :url="row.output"></link-prevue>
+          <link-prevue :onButtonClick="onClick" :url="row.output"></link-prevue>
         </div>
 
-
-        <!--         <td><a :href=row.output :id="testLink"> Link </a></td>-->
-        <!--        <td>{{ row.recipeName }}</td>-->
-
-        <!--          {{row.output}}-->
       </div>
 
 
     </div>
 
-    <!--    {{ testLink }}-->
 
   </div>
 
@@ -55,14 +46,11 @@ function sendIngredients() {
         this.getRecipesResponse = response.data
         this.testLink = response.data.map(({output}) => output)
       })
-  // .catch(response => {
-  //   alert("Error")
-  // })
 }
 
-function getArrayFromObject() {
-  const entries = Object.entries(this.value);
-  return entries;
+function updateRecipeCount() {
+  this.$http.get('http://localhost:8080/stuff/recipeCount?a=' + 1)
+
 }
 
 
@@ -118,17 +106,20 @@ export default {
       'getRecipesResponse': [],
       'result': [],
       'testLink': '',
-      'linkArray': []
+      'linkArray': [],
 
 
     }
   },
   methods: {
     'sendIngredients': sendIngredients,
-    'getArrayFromObject': getArrayFromObject,
+    'updateRecipeCount': updateRecipeCount,
     onClick(prevue) {
-      console.log('click', prevue.images, prevue.title, prevue.url, prevue.description)
+      console.log(prevue.url)
+      this.$http.get('http://localhost:8080/stuff/recipeCount?a=' + prevue.url)
+      window.open(prevue.url, '_blank');
     }
+
   }
 }
 </script>
