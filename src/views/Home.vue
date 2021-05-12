@@ -132,6 +132,7 @@ export default {
   margin-left: auto;
   margin-right: auto;
 
+
 }
 
 div.block {
@@ -145,6 +146,7 @@ div.block label {
   text-align: center;
   margin-left: auto;
   margin-right: auto;
+
 
 }
 
@@ -164,6 +166,8 @@ div.block .input {
 .btn {
   border: 5px dotted;
   padding: unset;
+  animation: running;
+  color: brown;
 
 }
 
