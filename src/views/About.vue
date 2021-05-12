@@ -15,19 +15,14 @@
     >
     </multiselect>
     <br>
-    <button v-on:click="sendIngredients"><img alt="Vue logo" src="../assets/kylmikgif.gif"></button>
+    <button class="btn" v-on:click="sendIngredients"><img alt="Vue logo" src="../assets/kylmikgif.gif"></button>
     <div class="followFont">
       <div v-for="row in getRecipesResponse" class="col">
         <div>
           <link-prevue :onButtonClick="onClick" :url="row.output"></link-prevue>
         </div>
-
       </div>
-
-
     </div>
-
-
   </div>
 
 </template>
@@ -38,11 +33,8 @@ import LinkPrevue from 'link-prevue'
 
 function sendIngredients() {
   let x = this.value.map(y => y.ingredient_id);
-
   this.$http.get('http://localhost:8080/stuff/recipe?a=' + x)
-
       .then(response => {
-
         this.getRecipesResponse = response.data
         this.testLink = response.data.map(({output}) => output)
       })
@@ -61,7 +53,6 @@ export default {
 
   },
   data() {
-    let urlTest = 'https://www.delfi.ee/';
     return {
       value: '',
       options: [
@@ -118,20 +109,26 @@ export default {
       console.log(prevue.url)
       this.$http.get('http://localhost:8080/stuff/recipeCount?a=' + prevue.url)
       window.open(prevue.url, '_blank');
-    }
+    },
+    // onSelect (option) {
+    //   this.sendIngredients(option, value)
+    // }
 
   }
 }
 </script>
 <style>
-
 .row {
   display: table
+
 }
 
 .col {
   float: left;
-  padding: 50px;
+  padding: 1.9%;
+  margin-left: auto;
+  margin-right: auto;
+
 }
 
 div.block {
@@ -141,8 +138,11 @@ div.block {
 div.block label {
   width: 160px;
   display: block;
-  float: left;
-  text-align: left;
+  float: initial;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+
 }
 
 div.block .input {
@@ -157,6 +157,13 @@ div.block .input {
   text-align: center;
   color: #2c3e50;
 }
+
+.btn {
+  border: 5px dotted;
+  padding: unset;
+
+}
+
 
 #nav {
   padding: 30px;
